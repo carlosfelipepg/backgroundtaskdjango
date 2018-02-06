@@ -7,22 +7,23 @@ def your_function():
 
 
 class Execute(object):
-    #set interval time
+    # set interval time
     def __init__(self, interval=10):
         self.interval = interval
 
         thread = threading.Thread(target=self.run, args=())
-        #if it is equal to false background task is not active
+        # if it is equal to false background task is not active
         thread.daemon = True
         thread.start()
 
     def run(self):
-
-        while True:
-            # Do something
-            your_function()
-
-            time.sleep(self.interval)
+        try:
+            while True:
+                # Do something
+                your_function()
+                time.sleep(self.interval)
+        except Exception:
+            pass
 
 
 teste = Execute()
